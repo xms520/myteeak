@@ -1,0 +1,6 @@
+Package: com.test.mytweak
+Name: MyTweak
+Version: 1.0
+Architecture: arm64 arm64e
+Maintainer: test
+Description: test tweak
