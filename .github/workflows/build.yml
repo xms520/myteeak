@@ -1,0 +1,22 @@
+name: Build Tweak
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Theos
+        run: |
+          git clone --depth=1 https://github.com/theos/theos.git $HOME/theos
+          echo "THEOS=$HOME/theos" >> $GITHUB_ENV
+          sudo apt update
+          sudo apt install -y build-essential git curl ldid
+      - name: Make package
+        run: make package
+      - name: Upload deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: TweakDeb
+          path: packages/*.deb
