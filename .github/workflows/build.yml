@@ -1,0 +1,13 @@
+name: Build Tweak
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build with Theos
+        uses: theos/build-action@v1
+        with:
+          package: true
